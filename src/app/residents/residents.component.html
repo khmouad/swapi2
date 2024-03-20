@@ -1,0 +1,10 @@
+<div *ngIf="residentsList">
+<div *ngFor="let resident of residentsList | slice:(currentPage-1)*itemsPerPage:currentPage*itemsPerPage">
+  <p>{{ resident.name }}</p>
+  <button (click)="openDetailsModal(resident)">View Details</button>
+</div>
+</div>
+<button (click)="onPageChange(currentPage - 1)" [disabled]="currentPage === 1">Previ</button>
+<span>{{ currentPage }}</span>
+<button (click)="onPageChange(currentPage + 1)" [disabled]="currentPage * itemsPerPage >= residentsList.length">Next</button>
+<ng-container #modalContainer></ng-container>
